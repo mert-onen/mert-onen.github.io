@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mert Önen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --text: #2e2e2e;
+    --muted: #6b6b6b;
+    --accent: #8b2500;
+    --border: #d4d0c8;
+    --bg: #faf9f6;
+    --card: #f2f0eb;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+  }
+  nav .nav-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
+  nav .nav-name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  nav .nav-links { display: flex; gap: 1.8rem; }
+  nav .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+  }
+  nav .nav-links a:hover { color: var(--ink); }
+
+  /* LAYOUT */
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 4.5rem 0 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: 2.6rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+  .hero .tagline {
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 600px;
+  }
+  .hero .affiliations {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+  .hero .affiliations a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .hero .affiliations a:hover { border-bottom-color: var(--accent); }
+  .hero .contact-row {
+    display: flex;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+  }
+  .hero .contact-row a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: border-color 0.2s;
+  }
+  .hero .contact-row a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* SECTIONS */
+  section { padding: 2.5rem 0; }
+  section + section { border-top: 1px solid var(--border); }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ABOUT */
+  .about-text {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text);
+    max-width: 680px;
+  }
+  .about-text + .about-text { margin-top: 1rem; }
+
+  /* RESEARCH ITEMS */
+  .research-item {
+    margin-bottom: 2rem;
+  }
+  .research-item:last-child { margin-bottom: 0; }
+  .research-item .paper-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .research-item .paper-title {
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .research-item .paper-authors {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+  .research-item .paper-venue {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 0.15rem;
+  }
+  .research-item .paper-abstract {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-top: 0.7rem;
+    max-width: 700px;
+  }
+  .research-item .paper-links {
+    margin-top: 0.6rem;
+    display: flex;
+    gap: 1rem;
+  }
+  .research-item .paper-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--accent);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .research-item .paper-links a:hover { border-bottom-color: var(--accent); }
+
+  .paper-abstract-toggle {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .paper-abstract-toggle:hover { border-bottom-color: var(--accent); }
+  .paper-abstract.collapsed { display: none; }
+
+  /* CV SECTION */
+  .cv-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .cv-download:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+  .cv-download svg { width: 16px; height: 16px; }
+
+  /* TIMELINE */
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+    align-items: start;
+  }
+  .timeline-item:last-child { margin-bottom: 0; }
+  .timeline-date {
+    font-size: 0.82rem;
+    color: var(--muted);
+    padding-top: 0.1rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .timeline-content .tl-role {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .timeline-content .tl-place {
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+  .timeline-content .tl-detail {
+    font-size: 0.84rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  /* TEACHING */
+  .teaching-item {
+    margin-bottom: 1rem;
+  }
+  .teaching-item .teach-course {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .teaching-item .teach-detail {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    margin-top: 1rem;
+  }
+  footer p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 2rem; }
+    .hero { padding: 3rem 0 2.5rem; }
+    .timeline-item {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+    nav .nav-links { gap: 1.2rem; }
+    nav .nav-links a { font-size: 0.75rem; }
+  }
+
+  /* FADE-IN */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in:nth-child(1) { animation-delay: 0.05s; }
+  .fade-in:nth-child(2) { animation-delay: 0.12s; }
+  .fade-in:nth-child(3) { animation-delay: 0.19s; }
+  .fade-in:nth-child(4) { animation-delay: 0.26s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-name">Mert Önen</a>
+    <div class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#cv">CV</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero" id="about">
+    <div class="fade-in">
+      <h1>Mert Önen</h1>
+      <p class="affiliations">
+        PhD Student in Financial Economics · <a href="https://centreforfinance.org/" target="_blank">University College London</a>
+      </p>
+    </div>
+    <p class="tagline fade-in">
+      I study international finance, asset pricing, and macroeconomics, with a focus on government debt markets in developing economies.
+    </p>
+    <div class="about-text fade-in">
+      Before starting my PhD, I worked as a Senior Research Analyst at the <a href="https://www.bis.org" target="_blank" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--border)">Bank for International Settlements</a> in Basel and as a Data Analyst at Bloomberg in London. I hold an MSc from the University of Warwick and a BA from the University of Toronto.
+    </div>
+    <div class="contact-row fade-in">
+      <a href="mailto:mert.onen.24@ucl.ac.uk">mert.onen.24@ucl.ac.uk</a>
+    </div>
+  </header>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <h2 class="section-title">Research</h2>
+
+    <div class="research-item">
+      <div class="paper-label">Working Paper</div>
+      <div class="paper-title">Quantifying Financial Repression in Emerging Markets</div>
+      <div class="paper-venue">2025</div>
+      <div class="paper-links">
+        <button class="paper-abstract-toggle" onclick="toggleAbstract('abs1')">Abstract</button>
+        <a href="quantifying_repression_onen_130426">PDF</a>
+        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6122767">SSRN</a>
+      </div>
+      <div id="abs1" class="paper-abstract collapsed">
+        Financial repression, defined as policies that generate inelastic domestic demand for government debt, has historically accompanied periods of high fiscal needs. Yet no high-frequency, market-based measure of financial repression exists for emerging markets (EMs), where weaker institutions and lower debt tolerance create strong incentives for such policies. To that end, I examine the Domestic Bond Premium (DBP): the yield spread between EM local currency (LC) government bonds and AAA-rated supranational bonds in the same currency and maturity. Using security-level data from over 4,000 supranational bonds across 11 EM currencies, I document that the DBP is frequently negative and remains relatively stable during periods of financial stress when government LC yield spreads over US Treasuries widen dramatically. I develop an asset pricing framework that decomposes the DBP into default, liquidity, and financial repression components. The empirical evidence supports the theoretical prediction that default risk and liquidity alone cannot account for the low DBPs, pointing to financial repression as a key force suppressing government borrowing costs below default-free supranational benchmarks.
+      </div>
+    </div>
+
+    <div class="research-item" style="margin-top:2.5rem">
+      <div class="paper-label">Peer-Reviewed Publication</div>
+      <div class="paper-title">Overcoming Original Sin: Shedding New Light on Uneven Progress</div>
+      <div class="paper-authors">with Hyun Song Shin and Goetz von Peter</div>
+      <div class="paper-venue">Economic Policy, Volume 40, Issue 122, Pages 575–620, 2025</div>
+      <div class="paper-links">
+        <button class="paper-abstract-toggle" onclick="toggleAbstract('abs2')">Abstract</button>
+        <a href="https://doi.org/10.1093/epolic/eiaf002">Published version</a>
+        <a href="https://www.bis.org/publ/work1075.htm">BIS Working Paper</a>
+      </div>
+      <div id="abs2" class="paper-abstract collapsed">
+        This article examines sovereign bond markets to assess the current state of Original Sin, the inability of a country to borrow (abroad) in its own currency. We present a synthesis of different strands of the literature using a new, tailored dataset. We find that major emerging market economies (EMEs) have made progress towards overcoming original sin by issuing more government bonds in local currency while promoting foreign participation in domestic bond markets; this went hand in hand with rising exposure to EME currencies among foreign investors. In panel regressions, we show that country-specific variables played a role alongside global push factors. However, progress has been slow and uneven, with a key role for institutional development. Progress is most evident among major EMEs, and stronger for sovereigns than for other issuers. Reducing reliance on foreign currency borrowing implies a greater role for investors whose sensitivity to currency risk can make capital flows more volatile—reintroducing the problem in a different guise, as original sin redux.
+      </div>
+    </div>
+
+    <div class="research-item" style="margin-top:2.5rem">
+      <div class="paper-label">Policy Publication</div>
+      <div class="paper-title">Covid-19 Policy Measures to Support Bank Lending</div>
+      <div class="paper-authors">with Catherine Casanova and Bryan Hardy</div>
+      <div class="paper-venue">BIS Quarterly Review, September 2021, Pages 45–59</div>
+      <div class="paper-links">
+        <a href="https://www.bis.org/publ/qtrpdf/r_qt2109d.htm">Paper</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CV -->
+  <section id="cv">
+    <h2 class="section-title">Curriculum Vitae</h2>
+
+    <a class="cv-download" href="mert_onen_cv_130426.pdf" download>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>
+      Download CV (PDF)
+    </a>
+
+    <div style="margin-top: 2.5rem;">
+      <h3 style="font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--muted);margin-bottom:1rem;">Education</h3>
+      <div class="timeline-item">
+        <div class="timeline-date">2024 – present</div>
+        <div class="timeline-content">
+          <div class="tl-role">PhD in Financial Economics</div>
+          <div class="tl-place">University College London</div>
+          <div class="tl-detail">Advisers: Saleem Bahaj, Franck Portier</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2018</div>
+        <div class="timeline-content">
+          <div class="tl-role">MSc in Economics, Distinction</div>
+          <div class="tl-place">University of Warwick</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2017</div>
+        <div class="timeline-content">
+          <div class="tl-role">Honours BA in Economics, GPA: 3.9/4.0</div>
+          <div class="tl-place">University of Toronto</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <h3 style="font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--muted);margin-bottom:1rem;">Experience</h3>
+      <div class="timeline-item">
+        <div class="timeline-date">2025 – present</div>
+        <div class="timeline-content">
+          <div class="tl-role">Research Assistant</div>
+          <div class="tl-place">Saleem Bahaj (UCL) and Jonathon Hazell (LSE)</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2020 – 2024</div>
+        <div class="timeline-content">
+          <div class="tl-role">Senior Research Analyst</div>
+          <div class="tl-place">Bank for International Settlements, Basel</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2018 – 2020</div>
+        <div class="timeline-content">
+          <div class="tl-role">Data Analyst</div>
+          <div class="tl-place">Bloomberg L.P., London</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching">
+    <h2 class="section-title">Teaching</h2>
+    <div class="teaching-item">
+      <div class="teach-course">International Macroeconomics and Finance</div>
+      <div class="teach-detail">Postgraduate Teaching Assistant · MSc in Finance · UCL, 2026</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div style="font-size:0.92rem;line-height:1.8;">
+      <div><strong>Email:</strong> <a href="mailto:mert.onen.24@ucl.ac.uk" style="color:var(--accent);text-decoration:none;">mert.onen.24@ucl.ac.uk</a></div>
+      <div style="margin-top:0.8rem;color:var(--muted);font-size:0.88rem;">
+        University College London<br>
+        Department of Economics<br>
+        London, United Kingdom
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Mert Önen</p>
+  </div>
+</footer>
+
+<script>
+function toggleAbstract(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('collapsed');
+  const btn = el.previousElementSibling.querySelector('.paper-abstract-toggle') ||
+              el.parentElement.querySelector('.paper-abstract-toggle');
+  if (btn) {
+    btn.textContent = el.classList.contains('collapsed') ? 'Abstract' : 'Hide abstract';
+  }
+}
+</script>
+
+</body>
+</html>
